@@ -6,6 +6,7 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
+const serveIndex = require('serve-index');
 
 const port = process.env.PORT || 4001;
 const index = require("./routes");
@@ -13,6 +14,7 @@ const index = require("./routes");
 // Set up an Express application
 const app = express();
 app.use(index);
+app.use('/.well-known', express.static('.well-known'), serveIndex('.well-known'));
 
 // Set up a node server and pass it to a socketIo instance
 const server = http.createServer(app);
