@@ -7,3 +7,5 @@
 .DS_STORE
 *.pem
 *.crt
+
+certs/*
